@@ -20,14 +20,14 @@ def cargador():
         archivo.save(archivo.filename)
 
         df = pd.read_csv(archivo.filename) #Lee el archivo
-
+        lista = ['PUNT_LECTURA_CRITICA','PUNT_MATEMATICAS','PUNT_C_NATURALES','PUNT_SOCIALES_CIUDADANAS','PUNT_INGLES']
         #Agrupamiento de datos/tabla
 
         puntaje_departamento = df.groupby(['ESTU_DEPTO_RESIDE'])['PUNT_GLOBAL'].median().reset_index()
 
         conteo_departamento = df.groupby(['ESTU_DEPTO_RESIDE'])['PUNT_GLOBAL'].count().reset_index()
 
-        puntaje_competencias = df.groupby(['ESTU_DEPTO_RESIDE'])['PUNT_LECTURA_CRITICA','PUNT_MATEMATICAS','PUNT_C_NATURALES','PUNT_SOCIALES_CIUDADANAS','PUNT_INGLES'].median().reset_index()
+        puntaje_competencias = df.groupby(['ESTU_DEPTO_RESIDE'])[lista].median().reset_index()
 
         #Puntajes Máximos
 
