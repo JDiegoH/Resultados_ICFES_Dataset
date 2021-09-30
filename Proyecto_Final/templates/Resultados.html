@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>RESULTADOS ICFES</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Estilos.css' ) }}">
+        
+    </head>
+    <body>
+
+        <header class = "titulo">
+
+            <h1>RESULTADOS ICFES 2019-2</h1>
+
+        </header>
+
+        <div class = "intro">
+
+            <h2>Se presenta la siguiente información tomando el dataset seleccionado con  tamaño de la muestra correspondiente a 546.212 estudiantes de Colombia, 
+                que presentaron la prueba del icfes (saber 11) en el año 2019-2, datos con los cuales se pretende realizar un análisis para comprender de manera 
+                más clara estos resultados haciendo uso de diferentes gráficas</h2>
+
+        </div>
+
+        <div class = "genero">
+
+            <div class = "cantidad">
+
+                <img class = "imagen" src="{{url_for('static', filename='mujer.png')}}"  />
+                <h2>CANTIDAD: {{ mujeres }}</h2>
+                <br>
+                <p>PUNTAJE PROMEDIO: {{ p_mujer }}</p>
+
+            </div>
+
+            <div class = "cantidad">
+
+                <img class = "imagen" src="{{url_for('static', filename='hombre.png')}}"  />
+                <h2>CANTIDAD: {{ hombres }}</h2>
+                <br>
+                <p>PUNTAJE PROMEDIO: {{ p_hombre }}</p>
+
+            </div>
+
+        </div>
+
+        <div class = "seccion">
+
+            <h2>ANÁLISIS POR DEPARTAMENTOS</h2>
+
+        </div>
+
+        <div class = "cuerpo">
+
+            <h3>En esta gráfica encontramos la media de los resultados obtenidos por los estudiantes en los departamentos participantes para esta prueba, 
+                donde se observa fácilmente la escala de los puntajes y podemos evidenciar de manera general los resultados obtenidos.</h3>
+        
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_departamento }}", width="50%">
+        
+        <div class = "cuerpo">
+
+            <h3>Con esta gráfica se puede evidenciar la participación de los estudiantes por departamento, donde queda clara la diferencia poblacional entre 
+                los diferentes departamentos del país y se observa que los principales departamentos cuentan con una mayor participación en el examen , siendo 
+                así Bogotá, Antioquia y el Valle los que más estudiantes evaluaron, los dos primeros con una marcada diferencia.</h3>
+
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_conteo_departamento }}"> <!--Obtiene la Imagen y la muestra-->
+
+        <div class = "cuerpo">
+
+            <h3>Para apreciar de una mejor manera la relación entre las diferentes competencias que se evalúan en la prueba, se realiza esta gráfica donde se toma 
+                la media de cada componente que conforma el puntaje global y se muestra dividida en la barra de cada departamento, con esto se logra visualizar de 
+                manera más sencilla el desempeño general del los participantes en los diferentes componentes que componen el examen.</h3>
+
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_competencias }}", width="50%"> <!--Obtiene la Imagen y la muestra-->
+
+        <div class = "maximo">
+            
+            LOS 5 DEPARTAMENTOS CON MAYORES PUNTAJES 
+            
+        </div>
+
+        <div class = "puntaje">
+
+            <div class = "valores_max">
+                <h2>BOGOTÁ</h2>
+                <br> 
+                <p>{{ bogota }}</p>
+            </div>
+
+            <div class = "valores_max">
+                <h2>BOLIVAR</h2>
+                <br>
+                <p>{{ bolivar }}</p>
+            </div>
+
+            <div class = "valores_max">
+                <h2>ANTIOQUIA</h2>
+                <br>
+                <p>{{ antioquia }}</p>
+            </div>
+
+            <div class = "valores_max">
+                <h2>META</h2>
+                <br>
+                <p>{{ meta }}</p>
+            </div>
+
+            <div class = "valores_max">
+                <h2>BOYACA</h2>
+                <br>
+                <p>{{ boyaca }}</p>
+            </div>
+
+        </div>
+
+        <div class = "minimo">
+            
+            LOS 5 DEPARTAMENTOS CON MENORES PUNTAJES 
+            
+        </div>
+
+        <div class = "puntaje">
+
+            <div class = "valores_min">
+                <h2>ANTIOQUIA</h2>
+                <br> 
+                <p>{{ m_antioquia }}</p>
+            </div>
+
+            <div class = "valores_min">
+                <h2>LA GUAJIRA</h2>
+                <br>
+                <p>{{ guajira }}</p>
+            </div>
+
+            <div class = "valores_min">
+                <h2>ARAUCA</h2>
+                <br>
+                <p>{{ arauca }}</p>
+            </div>
+
+            <div class = "valores_min">
+                <h2>CAUCA</h2>
+                <br>
+                <p>{{ cauca }}</p>
+            </div>
+
+            <div class = "valores_min">
+                <h2>VALLE</h2>
+                <br>
+                <p>{{ valle }}</p>
+            </div>
+
+        </div>
+        
+        <div class = "seccion">
+
+            <h2>ANÁLISIS POR CONDICIONES SOCIOECONÓMICAS</h2>
+
+        </div>
+
+        <div class = "cuerpo">
+            
+            <h3>Para conocer si la condición económica de los participantes en las pruebas puede influir en los resultados obtenidos, se elaboró la siguiente 
+                gráfica donde se encuentra la media del puntaje global separado en los diferentes estratos socioeconómicos; en la cual podemos notar que no 
+                necesariamente pertenecer a un estrato alto garantiza un puntaje alto en los resultados de la prueba ya que la diferencia entre los estos no 
+                es muy significativa. Es de resaltar que entre el estrato 1 y 6 la diferencia es mínima.</h3>
+
+        </div>
+
+        <div class = "tabla">
+
+            <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_estrato }}"> <!--Obtiene la Imagen y la muestra-->
+            {{ tabla_puntaje_estrato|safe }}
+            
+        </div>
+        
+        <div class = "cuerpo">
+            
+            <h3>Con esta gráfica se pretende identificar si una mayor dedicación a la lectura puede influir en los resultados de la prueba, por lo tanto se decidió
+                comparar con la competencia de lectura crítica que se evalua en esta prueba. Como se puede observar se confirma que entre más horas de dedicación 
+                a la lectura tienen los estudiantes, mayor es la media del resultado obtenido, siendo el de más de 2 horas de lectura el que mayor resultado obtuvo.</h3>
+
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_dedicacion_lectura }}", width="70%"> <!--Obtiene la Imagen y la muestra-->
+
+        <div class = "cuerpo">
+            
+            <h3>Para observar si se encuentra alguna relación entre la media de los resultados obtenidos y la jornada  académica que tienen los estudiantes, se realizó 
+                el siguiente gráfico de torta, donde podemos observar que si tiene una gran incidencia el tiempo de estudio ya que la jornada completa es la que obtuvo 
+                el mayor puntaje y por el contrario la jornada de la noche obtuvo el menor, con una diferencia de 76 puntos en el total.</h3>
+
+        </div>
+
+        <div class = "tabla">
+
+            <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_jornada }}"> <!--Obtiene la Imagen y la muestra-->
+            {{ tabla_puntaje_jornada|safe }} <!--Muestra la tabla-->
+
+        </div>
+
+        <div class = "cuerpo">
+            
+            <h3>Como se evidencia en la siguiente gráfica y con base en dichos resultados podemos afirmar que el acceso a Internet puede favorecer la media de los resultados 
+                obtenidos por los participantes, sin embargo no hay una diferencia muy grande entre los datos mostrados.</h3>
+
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_internet }}"> <!--Obtiene la Imagen y la muestra-->
+
+        <div class = "cuerpo">
+            
+            <h3>Para esta gráfica se pretende identificar si estudiar en un colegio bilingüe ayuda a obtener un mayor puntaje en la competencia de inglés y se encontró que por 
+                el contrario de lo que generalmente se podría suponer, la media de los resultados que obtuvieron mayor puntaje en esta competencia no pertenecen a un colegio 
+                bilingüe.</h3>
+
+        </div>
+
+        <img class = "imagen" src="data:image/png;base64, {{ imagen_puntaje_bilingue }}"> <!--Obtiene la Imagen y la muestra-->
+
+    </body>
+
+    <footer class="pie">
+
+        <p>Resultados ICFES 2019-2</p>
+        <p>Juan Diego Hernández - Alex Rodriguez - Camilo Caimán</p>
+
+    </footer>
+
+</html>
