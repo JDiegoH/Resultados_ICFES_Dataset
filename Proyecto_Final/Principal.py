@@ -10,16 +10,24 @@ from PIL import Image, ImageOps
 
 from pandas.core import base
 
+
+
 app = Flask(__name__)
 @app.route('/cargador',methods=['POST','GET']) #el link de la app
 def cargador():
     if request.method == 'GET': # IF no hay archivo seleccionado
         return render_template('Carga.html') #Muestra la página para seleccionar archivo
     else:
-        archivo = request.files['file'] #Obtiene y guarda el archivo
+        archivo = abrirArchivo('file') #Obtiene y guarda el archivo
+        
         archivo.save(archivo.filename)
 
         df = pd.read_csv(archivo.filename) #Lee el archivo
+
+        
+
+
+
         lista = ['PUNT_LECTURA_CRITICA','PUNT_MATEMATICAS','PUNT_C_NATURALES','PUNT_SOCIALES_CIUDADANAS','PUNT_INGLES']
         #Agrupamiento de datos/tabla
 
@@ -265,6 +273,18 @@ def cargador():
                                                 ,p_mujer = punt_mujeres[0]
                                         
         ) #Muestra la página 'resultados',envia la img y tabla
+
+def abrirArchivo(x):
+        return request.files[x]
+        
+
+def verificador():
+        verificar = pd.isnull
+        if verificar:
+                print('toy abierto')
+        else: print('no toy abierto')
+        return verificar
+
 
 if __name__ == '__main__':
     app.run()
