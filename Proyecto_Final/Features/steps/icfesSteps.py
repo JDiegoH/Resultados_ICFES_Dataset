@@ -1,16 +1,16 @@
 from behave import *
 from Principal import *
 
-@given ('un Principal')
+@given ('un archivo')
 def step_imp(context):
-    context.icfes = cargador()
+    context.archivo = 'Prueba_Saber_11_2019-2.csv'
 
 
-@when ('abrir archivo')
+@when ('recibe el archivo')
 def step_imp(context):
-    context.file = context.icfes.abrirArchivo('Proyecto_final/Prueba_Saber_11_2019-2.csv')
+    context.file = Abrir_archivo(context.archivo)
 
 
-@then ('agrupar tablas')
+@then ('abre el archivo')
 def step_imp(context):
-    assert context.file.verificador()
+    assert verificar(context.file)

@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import base64
 import io
 
+from io import *
+
 from PIL import Image, ImageOps
 
 from pandas.core import base
@@ -25,7 +27,8 @@ def cargador():
         df = pd.read_csv(archivo.filename) #Lee el archivo
 
         
-
+        aa = Abrir_archivo(0)
+        verificar(aa)
 
 
         lista = ['PUNT_LECTURA_CRITICA','PUNT_MATEMATICAS','PUNT_C_NATURALES','PUNT_SOCIALES_CIUDADANAS','PUNT_INGLES']
@@ -276,15 +279,18 @@ def cargador():
 
 def abrirArchivo(x):
         return request.files[x]
-        
 
-def verificador():
-        verificar = pd.isnull
-        if verificar:
-                print('toy abierto')
-        else: print('no toy abierto')
-        return verificar
+def Abrir_archivo(x):
+        file = open(x,"r")
+        return file
 
+def verificar(file):
+        if file.closed:
+                print("cerrado")
+                return False
+        else: 
+                print("abierto")
+                return True
 
 if __name__ == '__main__':
     app.run()
